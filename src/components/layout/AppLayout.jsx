@@ -71,14 +71,16 @@ export const AppLayout = ({
                 <div className="flex-1 relative overflow-hidden bg-slate-100">
                     {children}
 
-                    {/* Floating Controls */}
-                    <div className="absolute top-4 right-4 z-10 hidden md:block">
-                        <LayerController
-                            layers={layers}
-                            layerState={layerState}
-                            onToggleLayer={onToggleLayer}
-                            onOpacityChange={onOpacityChange}
-                        />
+                    {/* Floating Controls - Mobile & Desktop */}
+                    <div className="absolute bottom-4 right-4 md:top-4 md:right-4 z-30 pointer-events-none">
+                        <div className="pointer-events-auto">
+                            <LayerController
+                                layers={layers}
+                                layerState={layerState}
+                                onToggleLayer={onToggleLayer}
+                                onOpacityChange={onOpacityChange}
+                            />
+                        </div>
                     </div>
 
                     {/* Mobile Layer Toggle (To implemented later or integrate) */}
