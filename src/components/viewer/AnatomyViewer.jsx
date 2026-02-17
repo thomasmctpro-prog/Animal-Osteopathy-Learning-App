@@ -35,7 +35,7 @@ export const AnatomyViewer = ({ animal, layerState, onSelectPart, selectedPart }
                                     {/* Layer Image Background */}
                                     {layer.image && (
                                         <image
-                                            href={layer.image}
+                                            href={layer.image.startsWith('/') ? import.meta.env.BASE_URL + layer.image.slice(1) : layer.image}
                                             x="0"
                                             y="0"
                                             width="800"
