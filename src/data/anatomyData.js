@@ -6,6 +6,7 @@ export const animals = [
             {
                 id: 'skeleton',
                 name: 'Squelette',
+                image: '/assets/images/horse_skeleton.svg', // Placeholder
                 items: [
                     {
                         id: 'h-skull',
@@ -47,6 +48,7 @@ export const animals = [
             {
                 id: 'muscle_superficial',
                 name: 'Muscles Superficiels',
+                image: '/assets/images/horse_muscles.svg', // Placeholder
                 items: [
                     {
                         id: 'h-latissimus',

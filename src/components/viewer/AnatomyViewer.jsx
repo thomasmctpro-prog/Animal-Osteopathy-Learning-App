@@ -32,22 +32,36 @@ export const AnatomyViewer = ({ animal, layerState, onSelectPart, selectedPart }
 
                             return (
                                 <g key={layer.id} style={{ opacity: config.opacity }}>
+                                    {/* Layer Image Background */}
+                                    {layer.image && (
+                                        <image
+                                            href={layer.image}
+                                            x="0"
+                                            y="0"
+                                            width="800"
+                                            height="600"
+                                            preserveAspectRatio="xMidYMid meet"
+                                        />
+                                    )}
+
+                                    {/* SVGs Overlay / Hit Areas */}
                                     {layer.items.map((item) => {
                                         const isSelected = selectedPart?.id === item.id;
                                         return (
                                             <path
                                                 key={item.id}
                                                 d={item.path}
-                                                fill={isSelected ? '#3b82f6' : (item.color || '#e2e8f0')}
-                                                stroke={isSelected ? '#1e40af' : '#64748b'}
+                                                fill={isSelected ? 'rgba(59, 130, 246, 0.5)' : 'transparent'} // Transparent by default to see image
+                                                stroke={isSelected ? '#1e40af' : 'transparent'} // Only show stroke on hover/select or always? 
+                                                // Let's keep it transparent unless selected for now
+                                                // Or maybe dashed line? 
                                                 strokeWidth={isSelected ? 3 : 1}
-                                                className="transition-all duration-200 hover:fill-blue-200 cursor-pointer"
+                                                className="transition-all duration-200 hover:fill-blue-500/30 hover:stroke-blue-400 cursor-pointer"
                                                 onClick={(e) => {
                                                     e.stopPropagation();
                                                     // Attach layer name for context
                                                     onSelectPart({ ...item, layerName: layer.name });
                                                 }}
-                                            // Simple tooltip via title for now, could be custom floating div
                                             >
                                                 <title>{item.name}</title>
                                             </path>
